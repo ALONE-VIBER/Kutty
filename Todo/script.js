@@ -1,26 +1,29 @@
 //const todoList = document.querySelector("#todo-list");
-const todos = document.querySelectorAll("#todo-list .todo");
+const todos = document.querySelectorAll("#todo-list .todo-container");
 
-todos.forEach(function (todo) {
+todos.forEach(function (todoContainer) {
 
-    const content = todo.querySelector(".content");
+    const content = todoContainer.querySelector(".content");
     const para = content.querySelector("p");
-    const editButton = todo.querySelector("button");
-    const edit = todo.querySelector(".edit");
+    const editButton = todoContainer.querySelector("button");
+    const edit = todoContainer.querySelector(".edit");
     const updatebutton = edit.querySelector("button");
     const input = edit.querySelector("input");
+    const checkBox = todoContainer.querySelector(".check-box");
 
-    content.addEventListener("click", function () {
+    checkBox.textContent = "☐";    
 
+    todoContainer.addEventListener("click",()=>{
+        
         content.classList.toggle("task-accomplished");
 
-        // if (content.classList.contains("task-accomplished")) {
-        //     editButton.style.display = "none";
-        // } else {
-        //     editButton.style.display = "inline";
-        // }
-        editButton.style.display = content.classList.contains("task-accomplished")
-                                     ? "none" : "inline";
+        if (content.classList.contains("task-accomplished")) {
+            editButton.style.display = "none";
+            checkBox.textContent = "☑︎";
+        } else {
+            editButton.style.display = "inline";
+            checkBox.textContent = "☐";
+        }
     })
 
     editButton.addEventListener("click", function () {
