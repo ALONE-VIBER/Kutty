@@ -2,16 +2,44 @@
 <html>
 <head>
     <title>TO DO</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>TO DO List</h1>
     <div id="todo-list">
+
         <div class="todo">
-            <p>started the task</p>
+            <div class="content">
+                <p>started the task</p>
+            </div>
+            <button type="button">EDIT</button>
+            <div class="edit">
+                <input type="text" name="" id="new-todo">
+                <button type="button">UPDATE</button>    
+            </div>
         </div>
-        <div class="todo task-accomplished">
-            <p>ended the task</p>
+
+        <div class="todo ">
+            <div class="content">
+                <p>ended the task</p>
+            </div>
+            <button type="button">EDIT</button>
+            <div class="edit">
+                <input type="text" name="" id="new-todo">
+                <button type="button" id="update-todo">
+                    UPDATE
+                </button>    
+            </div>
         </div>
-    </div>
+
+        <div id="add-todo">
+            <input type="text" name="" id="new-todo">
+                <button type="button" id="add-todo">
+                    Add TODO
+                </button>
+        </div>
+
+    </div>    
+    <script src="script.js"></script>
 </body>
 </html>

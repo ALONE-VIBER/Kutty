@@ -1,0 +1,23 @@
+.todo{
+    color: blue;
+    cursor: pointer;
+    
+    p , button ,.content{
+        display: inline;
+    }
+    .edit{
+        display: none;
+    }
+}
+.todo .content::before{
+    content: "☐";
+}
+
+.task-accomplished{
+    text-decoration:line-through;
+    text-decoration-color: rgba(0, 0, 0, 0.562);
+    text-decoration-thickness: 2px;
+}
+.task-accomplished::before{
+    content:"☑︎";
+}

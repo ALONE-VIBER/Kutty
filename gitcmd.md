@@ -1,6 +1,6 @@
 | Command                     | Explanation                                      | Example                                 |
 |-----------------------------|--------------------------------------------------|-----------------------------------------|
-| `git add <file-name>` | Add the newly created or modified file to the staging area | `git add index.html`          |
+| `git add <file-name>` | Add the newly created or modified file to the staging area | `git add index.html` or `git add .` [to add all files - shorthand]         |
 | `git commit -m "<commit msg>"` | Commit the staged changes with a message . -m (commit msg)| `git commit -m "Added homepage"`        |
 | `git status`                | Show the working tree status                     | `git status`                            |
 | `git push`                  | Push changes to the remote repository            | `git push origin main`                   |
