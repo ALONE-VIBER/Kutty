@@ -9,13 +9,14 @@ function addAndModifyTodoListFunc(todoContainer) {
     const editButton = todoContainer.querySelector("button");
     // console.log();
     const edit = todoContainer.querySelector(".edit");
-    console.log("edit",edit);
-    const updatebutton = edit.querySelector("button");
-    console.log("updatebutton",updatebutton);
+    // console.log("edit",edit);
+    const updatebutton = edit.querySelector(".update-button");
+    const cancelbutton = edit.querySelector(".cancel-button");
+    // console.log("updatebutton",updatebutton);
     const input = edit.querySelector("input");
-    console.log("input",input);
+    // console.log("input",input);
     const checkBox = todoContainer.querySelector(".check-box");
-    console.log("checkBox",checkBox);
+    // console.log("checkBox",checkBox);
     checkBox.textContent = "☐";
 
     todo.addEventListener("click", () => {
@@ -37,12 +38,17 @@ function addAndModifyTodoListFunc(todoContainer) {
         // here the style of .edit class should be change
         edit.style.display = "block";
         input.value = para.textContent;
+        editButton.style.display = "none";
     })
     updatebutton.addEventListener("click", function () {
         para.textContent = input.value;
         edit.style.display = "none";
+        editButton.style.display = "inline";
     })
-
+    cancelbutton.addEventListener("click", function () {
+        edit.style.display = "none";
+        editButton.style.display = "inline";
+    })
 }
 
 const todoList = document.querySelector("#todo-list");
@@ -76,6 +82,7 @@ function addTodoList(){
     input.id = "new-todo";
     const updatebutton = document.createElement("button");
     updatebutton.textContent = "UPDATE";
+    updatebutton.className = "update-button";
 
     divContent.appendChild(p);
     divTodo.appendChild(divCheckBox);
