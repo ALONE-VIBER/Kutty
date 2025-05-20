@@ -1,26 +1,32 @@
-const todoList = document.querySelector("#todo-list");
-const todos = todoList.querySelectorAll(".todo-container");
+function addAndModifyTodoListFunc(todoContainer) {
 
-todos.forEach(function (todoContainer) {
-
-    console.log(todoContainer)
+    const todo = todoContainer.querySelector(".todo");
+    // console.log();
     const content = todoContainer.querySelector(".content");
+    // console.log();
     const para = content.querySelector("p");
+    // console.log();
     const editButton = todoContainer.querySelector("button");
+    // console.log();
     const edit = todoContainer.querySelector(".edit");
+    console.log("edit",edit);
     const updatebutton = edit.querySelector("button");
+    console.log("updatebutton",updatebutton);
     const input = edit.querySelector("input");
+    console.log("input",input);
     const checkBox = todoContainer.querySelector(".check-box");
+    console.log("checkBox",checkBox);
+    checkBox.textContent = "☐";
 
-    checkBox.textContent = "☐";    
+    todo.addEventListener("click", () => {
 
-    todoContainer.addEventListener("click",()=>{
-        
         content.classList.toggle("task-accomplished");
 
         if (content.classList.contains("task-accomplished")) {
             editButton.style.display = "none";
             checkBox.textContent = "☑︎";
+            edit.style.display = "none";
+
         } else {
             editButton.style.display = "inline";
             checkBox.textContent = "☐";
@@ -31,20 +37,20 @@ todos.forEach(function (todoContainer) {
         // here the style of .edit class should be change
         edit.style.display = "block";
         input.value = para.textContent;
-
     })
-
     updatebutton.addEventListener("click", function () {
         para.textContent = input.value;
         edit.style.display = "none";
     })
-})
 
-const addTodo = document.querySelector("#add-todo");
-const addTodoButton = addTodo.querySelector("button");
+}
 
-addTodoButton.addEventListener("click",()=>{
+const todoList = document.querySelector("#todo-list");
+const todoContainers = todoList.querySelectorAll(".todo-container");
+todoContainers.forEach(addAndModifyTodoListFunc);
 
+function addTodoList(){
+    
     const divContainer = document.createElement("div");
     divContainer.className = "todo-container";
 
@@ -56,7 +62,6 @@ addTodoButton.addEventListener("click",()=>{
 
     const divContent = document.createElement("div");
     divContent.className = "content";
-    divContent.textContent = "☐";
     
     const userInput = addTodo.querySelector("#new-todo");
     const  p = document.createElement("p");
@@ -66,6 +71,7 @@ addTodoButton.addEventListener("click",()=>{
     editbutton.textContent = "EDIT";
 
     const divEdit = document.createElement("div");
+    divEdit.className = "edit";
     const input = document.createElement("input");
     input.id = "new-todo";
     const updatebutton = document.createElement("button");
@@ -84,4 +90,12 @@ addTodoButton.addEventListener("click",()=>{
 
     todoList.appendChild(divContainer);
 
-})
+    addAndModifyTodoListFunc(divContainer);
+    
+    userInput.value = "";
+}
+
+
+const addTodo = document.querySelector("#add-todo");
+const addTodoButton = addTodo.querySelector("button");
+addTodoButton.addEventListener("click",addTodoList);
