@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Local Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='train.css') }}">
+</head>
+<body>
+    <h1>Hello, Localhost!</h1>
+    <button onclick="sayHello()">Click Me</button>
+    <script src="{{ url_for('static', filename='train.js') }}"></script>
+</body>
+</html>
