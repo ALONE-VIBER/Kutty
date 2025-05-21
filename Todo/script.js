@@ -5,11 +5,12 @@ function addAndModifyTodoListFunc(todoContainer) {
     const content = todoContainer.querySelector(".content");
     // console.log();
     const para = content.querySelector("p");
-    // console.log();
-    const editButton = todoContainer.querySelector("button");
+    // console.log(todoContainer);
+    const editButton = todoContainer.querySelector(".editbutton");
+    const deleteButton = todoContainer.querySelector(".deletebutton");
     // console.log();
     const edit = todoContainer.querySelector(".edit");
-    // console.log("edit",edit);
+    console.log("edit",edit);
     const updatebutton = edit.querySelector(".update-button");
     const cancelbutton = edit.querySelector(".cancel-button");
     // console.log("updatebutton",updatebutton);
@@ -39,15 +40,24 @@ function addAndModifyTodoListFunc(todoContainer) {
         edit.style.display = "block";
         input.value = para.textContent;
         editButton.style.display = "none";
+        deleteButton.style.display = "none";
+    })
+    deleteButton.addEventListener("click", function () {
+        todoContainer.remove();
+        // or we can use the following code
+        // const todo_container = deleteButton.closest(".todo-container");
+        // todo_container.remove();
     })
     updatebutton.addEventListener("click", function () {
         para.textContent = input.value;
         edit.style.display = "none";
         editButton.style.display = "inline";
+        deleteButton.style.display = "inline";
     })
     cancelbutton.addEventListener("click", function () {
         edit.style.display = "none";
         editButton.style.display = "inline";
+        deleteButton.style.display = "inline";
     })
 }
 
@@ -75,6 +85,10 @@ function addTodoList(){
 
     const editbutton = document.createElement("button");
     editbutton.textContent = "EDIT";
+    editbutton.className = "editbutton";
+    const deletebutton = document.createElement("button");
+    deletebutton.textContent = "DELETE";
+    deletebutton.className = "deletebutton";
 
     const divEdit = document.createElement("div");
     divEdit.className = "edit";
@@ -83,16 +97,21 @@ function addTodoList(){
     const updatebutton = document.createElement("button");
     updatebutton.textContent = "UPDATE";
     updatebutton.className = "update-button";
+    const cancelbutton = document.createElement("button");
+    cancelbutton.textContent = "CANCEL";
+    cancelbutton.className = "cancel-button";
 
     divContent.appendChild(p);
     divTodo.appendChild(divCheckBox);
     divTodo.appendChild(divContent);
     divContainer.appendChild(divTodo);
 
-    divContainer.appendChild(editbutton);
+    divContainer.appendChild(editbutton);   
+    divContainer.appendChild(deletebutton);
 
     divEdit.appendChild(input);
     divEdit.appendChild(updatebutton);
+    divEdit.appendChild(cancelbutton);
     divContainer.appendChild(divEdit);
 
     todoList.appendChild(divContainer);
