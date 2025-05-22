@@ -12,15 +12,25 @@ def addData(query, filename="userData.csv"):
             writer.writerow(['user'])  # Write header if file does not exist
         writer.writerow([query])
 
+def readData(filename="userData.csv"):
+    data = []
+    if os.path.exists(filename):
+        with open(filename,mode='r',newline='',encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                data.append(row["user"])
+    return data
+
 @app.route('/')
 def index():
-    return render_template('train.html')
+    csvfiledata = readData()
+    return render_template('train.html',csvData=csvfiledata)
 
 @app.route('/search', methods=['POST'])
 def search():
     data = request.get_json()
     query = data.get('user', '').lower()
-    print("\t--->"+query+"<-----")
+    print(query)
     addData(query)
     return f"Received : {query}"
 

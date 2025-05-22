@@ -6,6 +6,9 @@
 <body>
     <div id="main">
         <p>hai</p>
+        {% for data in csvData %}
+        <div><p>{{data}}</p></div>
+        {% endfor%}
     </div>
     <form id="searchForm">
         <label>Search Query:</label>
