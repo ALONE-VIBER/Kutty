@@ -21,6 +21,11 @@ def readData(filename="userData.csv"):
                 data.append(row["user"])
     return data
 
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = readData()
+    return jsonify(users)
+
 @app.route('/')
 def index():
     csvfiledata = readData()
