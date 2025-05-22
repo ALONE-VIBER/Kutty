@@ -1,23 +1,16 @@
 function addAndModifyTodoListFunc(todoContainer) {
 
     const todo = todoContainer.querySelector(".todo");
-    // console.log();
     const content = todoContainer.querySelector(".content");
-    // console.log();
     const para = content.querySelector("p");
-    // console.log(todoContainer);
     const editButton = todoContainer.querySelector(".editbutton");
     const deleteButton = todoContainer.querySelector(".deletebutton");
-    // console.log();
     const edit = todoContainer.querySelector(".edit");
     console.log("edit",edit);
     const updatebutton = edit.querySelector(".update-button");
     const cancelbutton = edit.querySelector(".cancel-button");
-    // console.log("updatebutton",updatebutton);
     const input = edit.querySelector("input");
-    // console.log("input",input);
     const checkBox = todoContainer.querySelector(".check-box");
-    // console.log("checkBox",checkBox);
     checkBox.textContent = "☐";
 
     todo.addEventListener("click", () => {
@@ -122,6 +115,9 @@ function addTodoList(){
 }
 
 
-const addTodo = document.querySelector("#add-todo");
-const addTodoButton = addTodo.querySelector("button");
-addTodoButton.addEventListener("click",addTodoList);
+const addTodo = document.querySelector("#add-todo-form");
+addTodo.addEventListener("submit",(event)=>{
+    
+    event.preventDefault();
+    addTodoList();
+})
